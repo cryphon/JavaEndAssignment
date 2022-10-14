@@ -1,0 +1,90 @@
+@font-face {
+    src: url("fonts/Montserrat-Regular.ttf");
+}
+
+/*
+    black: #222629
+    gray: #5c5d6b
+    lightGray: 6b6e70
+    lightGreen: #86c232
+    green: #61892f
+*/
+
+.root{
+    -fx-font-family: Montserrat;
+}
+
+
+
+#pane{
+    -fx-background-color: #222629;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+#toolbar{
+    -fx-background-color: transparent;
+    -fx-border-radius: 10 10 0 0;
+    -fx-background-radius: 10 10 0 0;
+    -fx-text-alignment: center;
+    -fx-font-size: 14;
+}
+
+#btnExit{
+    -fx-pref-height: 30;
+    -fx-pref-width: 30;
+    -fx-background-color: #FF4B4B;
+    -fx-font-family: Montserrat;
+    -fx-text-fill: #f4f4f4;
+    -fx-border-style: none;
+    -fx-border-radius: 150;
+    -fx-background-radius: 150;
+    -fx-translate-y: 10;
+    -fx-translate-x: 5;
+}
+
+#lblErrorLogin{
+    -fx-text-fill: #f4f4f4;
+}
+
+
+
+.textfield{
+    -fx-background-color: #6b6e70;
+    -fx-text-fill: #f4f4f4;
+    -fx-font-weight: 700;
+    -fx-pref-width: 150;
+    -fx-pref-height: 25;
+}
+
+
+.btnLogin{
+    -fx-pref-width: 150;
+    -fx-pref-height: 25;
+    -fx-background-color: #86c232;
+    -fx-font-weight: 700;
+}
+
+.btnLogin:hover{
+    -fx-background-color: #61892f;
+}
+
+.bgPane{
+    -fx-fill: #61892f;
+    -fx-translate-y: 6;
+}
+
+.bgSvg{
+    -fx-fill: #61892f;
+
+}
+
+.bgGreenPane{
+    -fx-pref-width: 640;
+    -fx-pref-height: 25;
+    -fx-translate-y: -2;
+    -fx-background-color: #61892f;
+    -fx-border-radius: 0 0 10 10;
+    -fx-background-radius: 0 0 10 10;
+}
+

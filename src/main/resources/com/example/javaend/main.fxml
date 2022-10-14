@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="mainPane" id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaend.mainUIController">
+   <children>
+      <ToolBar id="toolbar" prefHeight="60.0" prefWidth="640.0" nodeOrientation="RIGHT_TO_LEFT">
+        <items>
+            <Button id="btnExit" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onButtonClose" text="X" />
+        </items>
+      </ToolBar>
+      <TabPane styleClass="bgPane" layoutY="60.0" prefHeight="360.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab text="tab 1">
+               <content>
+                  <SplitPane dividerPositions="0.425" prefHeight="160.0" prefWidth="200.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="332.0" prefWidth="232.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="332.0" prefWidth="286.0" />
+                    </items>
+                  </SplitPane>
+               </content></Tab>
+          <Tab text="Untitled Tab 2">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</Pane>

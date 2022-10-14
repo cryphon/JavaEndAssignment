@@ -1,0 +1,36 @@
+@font-face {
+    src: url("fonts/Montserrat-Regular.ttf");
+}
+
+
+.root{
+    -fx-font-family: Montserrat;
+}
+
+
+#mainPane{
+    -fx-background-color: #222629;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+#toolbar{
+    -fx-background-color: transparent;
+}
+
+#btnExit{
+    -fx-pref-height: 30;
+    -fx-pref-width: 30;
+    -fx-background-color: #FF4B4B;
+    -fx-font-family: Montserrat;
+    -fx-text-fill: #f4f4f4;
+    -fx-border-style: none;
+    -fx-border-radius: 150;
+    -fx-background-radius: 150;
+    -fx-translate-y: -5;
+    -fx-translate-x: 6;
+}
+
+
+.bgPane{
+    -fx-background-color: #222629;
+}
