@@ -19,7 +19,7 @@ public class program extends Application {
         stage.initStyle(StageStyle.TRANSPARENT);
 
         StageAndSceneController scController = new StageAndSceneController(stage);
-        scController.setScene("login");
+        scController.setScene("main");
     }
 
     public static void main(String[] args) {

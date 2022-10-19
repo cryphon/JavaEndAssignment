@@ -3,20 +3,21 @@ package com.example.javaend.Models;
 import java.time.LocalDate;
 
 public class User {
-    protected int _id;
-    protected String _firstName;
-    protected String _lastName;
-    protected String _passwd;
-    protected LocalDate _dob;
+    private final int _id;
+    private final String _firstName;
+    private final String _lastName;
+    private final String _passwd;
+    private final LocalDate _dob;
 
     //BEGIN getters
-    public int getId() { return _id; }
-    public String getFirstName(){ return _firstName; }
-    public String getLastName() { return _lastName; }
-    public String getPasswd() { return _passwd; }
-    public LocalDate getDateOfBirth() { return _dob; }
-    //END getters
+    public int get_id() { return _id; }
+    public String get_firstName(){ return _firstName; }
+    public String get_lastName() { return _lastName; }
 
+    public String get_fullName(){ return String.format("%s %s", get_firstName(), get_lastName()); }
+    public String get_passwd() { return _passwd; }
+    public LocalDate get_dateOfBirth() { return _dob; }
+    //END getters
 
     //ctor
     public User(int id, String fName, String lName, String passwd, LocalDate dob){

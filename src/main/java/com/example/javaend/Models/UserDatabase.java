@@ -22,18 +22,19 @@ public class UserDatabase {
     public void initDB()
     {
         _users = new ArrayList<>();
-        _users.add(new User(getNewUserID(), "root", "root", "root", LocalDate.of(2001, 9, 11)));
-        _users.add(new User(getNewUserID(), "admin", "admin", "root", LocalDate.of(2002, 5, 15)));
+        addNewUser( "root", "root", "root", LocalDate.of(2001, 9, 11));
+        addNewUser( "admin", "admin", "root", LocalDate.of(2002, 5, 15));
+        addNewUser("Emma", "Smith", "root", LocalDate.now());
     }
 
     public int getNewUserID()
     {
         int id = 0;
         for (User u : _users) {
-            if(u.getId() > id)
-                id = u.getId();
+            if(u.get_id() > id)
+                id = u.get_id();
         }
-        return id;
+        return id + 1;
     }
 
     public boolean VerifyCredentials(String name, String passwd)
@@ -42,15 +43,24 @@ public class UserDatabase {
         try{
             unverifiedUser = getUserByName(name);
             assert unverifiedUser != null;
-            return _users.stream().anyMatch(u -> Objects.equals(unverifiedUser.getFirstName(), name) && Objects.equals(unverifiedUser.getPasswd(), passwd));
+            return _users.stream().anyMatch(u -> Objects.equals(unverifiedUser.get_firstName(), name) && Objects.equals(unverifiedUser.get_passwd(), passwd));
         }catch(Exception e){ return false; }
     }
 
     public User getUserByName(String name){
-        Optional<User> user = _users.stream().filter(u -> Objects.equals(u.getFirstName(), name)).findFirst();
+        Optional<User> user = _users.stream().filter(u -> Objects.equals(u.get_firstName(), name)).findFirst();
         if(user.isEmpty())
             return null;
-        return (User) user.get();
+        return user.get();
     }
+
+    public User getUserById(int id){
+        Optional<User> user = _users.stream().filter(u -> Objects.equals(u.get_id(), id)).findFirst();
+        if(user.isEmpty())
+            return null;
+        return user.get();
+    }
+
+    public void addNewUser(String fName, String lName, String passwd ,LocalDate dob) { _users.add(new User(getNewUserID(), fName, lName, passwd, dob)); }
     //END methods
 }

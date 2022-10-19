@@ -59,8 +59,10 @@ public class greeterUIController{
 
     public void btnLoginClicked() throws IOException {
         StageAndSceneController scController = new StageAndSceneController((Stage)greeterGridPane.getScene().getWindow());
-        if(VerifyUserCredentials())
-            scController.setScene("main");
+        if(!VerifyUserCredentials())
+            return;
+        UserDatabase db = new UserDatabase();
+        scController.setScene("main", db.getUserByName(txtUsernameInput.getText()));
 
     }
 
