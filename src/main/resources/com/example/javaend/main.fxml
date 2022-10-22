@@ -22,7 +22,7 @@
                                <TextField fx:id="txtItemCodeLend" maxHeight="-Infinity" maxWidth="-Infinity" promptText="Item code" styleClass="textField" />
                                <TextField fx:id="txtMemberIdLend" maxHeight="-Infinity" maxWidth="-Infinity" promptText="Member identifier" styleClass="textField" />
                                <Button maxHeight="-Infinity" maxWidth="-Infinity" onAction="#onLendClicked" prefHeight="26.0" prefWidth="280.0" styleClass="btnAction" text="Lend item" />
-                               <Label fx:id="lblLendError" />
+                               <Label fx:id="lblLendError" id="lblError"/>
                                <padding>
                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                </padding>
@@ -32,7 +32,7 @@
                            <VBox alignment="CENTER" layoutX="-1.0" layoutY="1.0" prefHeight="332.0" prefWidth="320.0" spacing="20.0">
                                <TextField fx:id="txtItemCodeReceive" maxWidth="-Infinity" promptText="Item Code" styleClass="textField" />
                                <Button maxWidth="-Infinity" onAction="#onReceiveClicked" styleClass="btnAction" text="Receive item" />
-                               <Label fx:id="lblReceiveError" />
+                               <Label fx:id="lblReceiveError" id="lblError"/>
                                <padding>
                                    <Insets bottom="20.0" left="20.0" right="20.0" top="-35.0" />
                                </padding>
@@ -54,6 +54,20 @@
                                <TableColumn text="Author" prefWidth="145"/>
                            </columns>
                        </TableView>
+                       <HBox prefWidth="640.0" spacing="20">
+                           <Button text="Add item" styleClass="btnActionCollection" id="AddButton" onAction="#AddItemClicked" fx:id="btnAddItem"/>
+                           <Button text="Edit item" styleClass="btnActionCollection" id="EditButton" onAction="#EditItemClicked" fx:id="btnEditItem"/>
+                           <Button text="Delete Item" styleClass="btnActionCollection" id="DelButton" onAction="#DelItemClicked" fx:id="btnDelItem"/>
+                           <Label id="lblError" fx:id="lblCollectionError"/>
+                           <padding>
+                               <Insets bottom="25.0" top="10.0" />
+                           </padding>
+                       </HBox>
+                       <HBox prefWidth="640.0" spacing="20.0">
+                           <TextField promptText="Title" fx:id="txtAddItemTitle" styleClass="textField"/>
+                           <TextField promptText="Author" fx:id="txtAddItemAuthor" styleClass="textField"/>
+                           <Button text="Create" fx:id="btnCreateItemPopup" styleClass="btnAction" onAction="#onCreateItemClicked"/>
+                       </HBox>
                        <padding>
                            <Insets bottom="20.0" left="20.0" right="20.0" />
                        </padding>

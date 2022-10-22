@@ -102,12 +102,16 @@
     -fx-text-fill: #6b6e70;
 }
 
+#lblError{
+    -fx-text-fill: white;
+}
+
 /*collection*/
 
 .collectionPane{
     -fx-border-style: solid none none none;
-    -fx-border-width: 1;
-    -fx-border-color: #5c5d6b;
+    -fx-border-width: 2;
+    -fx-border-color: #86c232;
     -fx-border-radius: 0 0 10 10;
 }
 
@@ -183,4 +187,25 @@
 .table-row-cell:selected {
     -fx-background-color: #86c232;
     -fx-background-radius: 5;
+}
+
+.btnActionCollection{
+    -fx-padding: 5;
+    -fx-background-radius: 5;
+    -fx-background-color: #5c5d6b;
+}
+
+.btnActionCollection:hover{
+    -fx-text-fill: white;
+}
+
+#AddButton{
+    -fx-background-color: #86c232;
+}
+
+#EditButton{
+    -fx-background-color: #6b6e70;
+}
+#DelButton{
+    -fx-background-color: #FF4B4B;
 }
