@@ -2,10 +2,8 @@ package com.example.javaend.Models;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Optional;
 
-public class SerializedItem implements Serializable {
+public class ItemSerialized implements Serializable {
     protected int _id;
     protected String _title;
     protected String _author;
@@ -13,7 +11,7 @@ public class SerializedItem implements Serializable {
     protected LocalDate _lendingDate;
     protected int _lentByUid;
 
-    public SerializedItem(int _id, String _title, String _author, Availability _availability, LocalDate _lendingDate, int _lentByUid){
+    public ItemSerialized(int _id, String _title, String _author, Availability _availability, LocalDate _lendingDate, int _lentByUid){
         this._id = _id;
         this._title = _title;
         this._author = _author;

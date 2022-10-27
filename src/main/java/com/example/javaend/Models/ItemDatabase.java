@@ -27,7 +27,7 @@ public class ItemDatabase {
 
     public void update(){
         try {
-            writeAllToFile();
+            write();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -40,7 +40,7 @@ public class ItemDatabase {
                 new FileInputStream(new File("items.dat")))) {
             while (true) {
                 try {
-                    SerializedItem is = (SerializedItem) ois.readObject();
+                    ItemSerialized is = (ItemSerialized) ois.readObject();
                     _items.add(new Item(is._id, is._title, is._author, is._availability, is._lendingDate, is._lentByUid));
                 } catch (EOFException eof) {
                     break; // break out of the loop when at end of file
@@ -53,13 +53,13 @@ public class ItemDatabase {
         }
     }
 
-    private void writeAllToFile() throws IOException {
+    private void write() throws IOException {
         emptyFile();
         try{
             FileOutputStream fos = new FileOutputStream(new File("items.dat"));
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             for(Item i : _items){
-                SerializedItem si = new SerializedItem(i.get_id(), i.get_title(), i.get_author(), i.get_availability(), i.get_lendingDate(), i.get_lentByUid());
+                ItemSerialized si = new ItemSerialized(i.get_id(), i.get_title(), i.get_author(), i.get_availability(), i.get_lendingDate(), i.get_lentByUid());
                 oos.writeObject(si);
             }
 
@@ -96,6 +96,12 @@ public class ItemDatabase {
 
     public void addNewItem(String title, String author) {
         _items.add(new Item(getNewItemId(), title, author));
+        update();
+    }
+    public void editItemTitleAndAuthor(Item i, String title, String author){
+        Item permItem = _items.stream().filter(item -> Objects.equals(item.get_id(), i.get_id())).findFirst().get();
+        permItem.set_title(title);
+        permItem.set_author(author);
         update();
     }
 

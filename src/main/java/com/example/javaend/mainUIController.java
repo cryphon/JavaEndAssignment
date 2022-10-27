@@ -7,8 +7,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Objects;
 
@@ -23,18 +22,16 @@ public class mainUIController {
     public TextField txtItemCodeReceive;
     public Label lblReceiveError;
     public Label lblCollectionError;
-    public TextField txtAddItemTitle;
-    public TextField txtAddItemAuthor;
-    public Button btnCreateItemPopup;
+    public TextField txtCRUDItemTitle;
+    public TextField txtCRUDItemAuthor;
+    public Button btnConfirmItemCRUD;
     public Button btnAddItem;
     public Button btnEditItem;
     public Button btnDelItem;
 
-    private User _user;
     private double x, y;
     public void init(Stage stage, User u){
-        _user = u;
-        lblUsername.setText(String.format("Welcome %s", _user.get_fullName()));
+        lblUsername.setText(String.format("Welcome %s", u.get_fullName()));
 
         //toolbar drag
         toolbar.setOnMousePressed(mouseEvent -> {
@@ -113,9 +110,9 @@ public class mainUIController {
                 return;
             }
             //lend days
-            Period p = Period.between(item.get_lendingDate(), LocalDate.now());
-            if(p.getDays() >= 21) {
-                int exDays = p.getDays() - 21;
+            int days = (int) ChronoUnit.DAYS.between(item.get_lendingDate(), LocalDate.now());
+            if(days >= 21) {
+                int exDays = days - 21;
                 lblReceiveError.setText(String.format("Item is late by %d days", exDays));
                 return;
             }
@@ -132,64 +129,71 @@ public class mainUIController {
         }
         return true;
     }
+
     /*  collection  */
     public void onCollectionClicked(){
-        UpdateTableView();
-        btnCreateItemPopup.setVisible(false);
-        txtAddItemTitle.setVisible(false);
-        txtAddItemAuthor.setVisible(false);
+        updateTableView();
+        btnConfirmItemCRUD.setVisible(false);
+        txtCRUDItemTitle.setVisible(false);
+        txtCRUDItemAuthor.setVisible(false);
     }
-    private void UpdateTableView(){
+    private void updateTableView(){
         tableViewCollection.getItems().clear();
         setColumnPropertyValues();
         ItemDatabase db = new ItemDatabase();
         List<Item> items = db.get_items();
-        items.forEach(item -> {
-            tableViewCollection.getItems().add(item);
-        });
+        items.forEach(item -> tableViewCollection.getItems().add(item));
     }
     private void setColumnPropertyValues(){
         tableViewCollection.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("_id"));
         tableViewCollection.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("_availability"));
         tableViewCollection.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("_title"));
         tableViewCollection.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("_author"));
-
     }
-
-    public void AddItemClicked() {
+    public void onAddItemClicked() {
         tableViewCollection.getSelectionModel().clearSelection();
-        btnAddItem.setDisable(true);
         displayAddTextFields();
+        btnConfirmItemCRUD.setText("Create Item");
     }
-
-    public void EditItemClicked(){
-        //discard method if null
-        Item item = getItemFromTable();
+    public void onEditItemClicked(){
+        Item item = getItemFromCollectionTable();
         if(Objects.isNull(item))
             return;
+        //set title and auth to subfields
+        txtCRUDItemTitle.setText(item.get_title());
+        txtCRUDItemAuthor.setText(item.get_author());
+        displayAddTextFields();
+        btnConfirmItemCRUD.setText("Edit Item");
     }
-
-    public void DelItemClicked(){
+    public void onDelItemClicked(){
         ///discard method if null
-        Item item = getItemFromTable();
+        Item item = getItemFromCollectionTable();
         if(Objects.isNull(item)){
             lblCollectionError.setText("no item");
             return;
         }
         ItemDatabase db = new ItemDatabase();
         db.deleteItem(item);
-        UpdateTableView();
+        updateTableView();
     }
-
-    public void onCreateItemClicked(){
+    public void onCRUDItemClicked(){
         ItemDatabase db = new ItemDatabase();
-        String title = txtAddItemTitle.getText();
-        String author = txtAddItemAuthor.getText();
-        db.addNewItem(title, author);
-        UpdateTableView();
+        String title = txtCRUDItemTitle.getText();
+        String author = txtCRUDItemAuthor.getText();
+        if(Objects.equals(btnConfirmItemCRUD.getText(), "Create Item")){
+            db.addNewItem(title, author);
+        }
+        if(Objects.equals(btnConfirmItemCRUD.getText(), "Edit Item")){
+            //discard method if null
+            Item item = getItemFromCollectionTable();
+            if(Objects.isNull(item))
+                return;
+            db.editItemTitleAndAuthor(item, txtCRUDItemTitle.getText(), txtCRUDItemAuthor.getText());
+        }
+        displayHideTextFields();
+        updateTableView();
     }
-
-    private Item getItemFromTable(){
+    private Item getItemFromCollectionTable(){
         Item item = null;
         try {
             item = tableViewCollection.getSelectionModel().getSelectedItem();
@@ -199,12 +203,21 @@ public class mainUIController {
             lblCollectionError.setText("no row selected");
         return item;
     }
-
     private void displayAddTextFields(){
-        txtAddItemTitle.setVisible(true);
-        txtAddItemAuthor.setVisible(true);
-        btnCreateItemPopup.setVisible(true);
+        txtCRUDItemTitle.setVisible(true);
+        txtCRUDItemAuthor.setVisible(true);
+        btnConfirmItemCRUD.setVisible(true);
     }
+    private void displayHideTextFields(){
+        txtCRUDItemTitle.setVisible(false);
+        txtCRUDItemAuthor.setVisible(false);
+        btnConfirmItemCRUD.setVisible(false);
+    }
+
+    /* members*/
+    public void onAddMemberClicked(){}
+    public void onEditMemberClicked(){}
+    public void onDelMemberClicked(){}
 
     //END  methods
 }

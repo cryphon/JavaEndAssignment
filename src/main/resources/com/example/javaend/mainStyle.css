@@ -189,13 +189,12 @@
     -fx-background-radius: 5;
 }
 
-.btnActionCollection{
-    -fx-padding: 5;
+.btnAction{
     -fx-background-radius: 5;
     -fx-background-color: #5c5d6b;
 }
 
-.btnActionCollection:hover{
+.btnAction:hover{
     -fx-text-fill: white;
 }
 

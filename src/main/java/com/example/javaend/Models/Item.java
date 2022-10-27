@@ -18,6 +18,8 @@ public class Item {
     public Availability get_availability() { return _availability; }
     public LocalDate get_lendingDate() { return _lendingDate; }
     public int get_lentByUid() { return _lentByUid; }
+    public void set_title(String title) { _title = title; }
+    public void set_author(String author) { _author = author; }
     public void set_availability(Availability a) { _availability = a; }
     public void set_lentByUid(int uid) { _lentByUid = uid; }
     public void set_lendingDate(LocalDate date) {_lendingDate = date; }

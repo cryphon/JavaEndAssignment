@@ -4,69 +4,124 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.skin.TableHeaderRow?>
-<Pane id="mainPane" fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaend.mainUIController">
-   <children>
-      <ToolBar id="toolbar" fx:id="toolbar" nodeOrientation="RIGHT_TO_LEFT" prefHeight="60.0" prefWidth="640.0">
-        <items>
-            <Button id="btnExit" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onButtonClose" text="X" />
-        </items>
-      </ToolBar>
-       <TabPane layoutY="56.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="364.0" prefWidth="640.0" styleClass="tabPane" tabClosingPolicy="UNAVAILABLE">
-           <Tab id="tabLendingAndReceiving" text="lending/receiving">
-               <Pane prefHeight="320.0" prefWidth="640" maxWidth="-Infinity" maxHeight="-Infinity">
-                   <Label text="Username here" prefWidth="640.0" id="lblTabTitle" fx:id="lblUsername"/>
-                   <SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="320.0" prefWidth="640.0" styleClass="splitPane">
-                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="332.0" prefWidth="232.0">
-                           <VBox alignment="CENTER" layoutX="-1.0" layoutY="-4.0" prefHeight="332.0" prefWidth="320.0" spacing="20.0">
-                               <TextField fx:id="txtItemCodeLend" maxHeight="-Infinity" maxWidth="-Infinity" promptText="Item code" styleClass="textField" />
-                               <TextField fx:id="txtMemberIdLend" maxHeight="-Infinity" maxWidth="-Infinity" promptText="Member identifier" styleClass="textField" />
-                               <Button maxHeight="-Infinity" maxWidth="-Infinity" onAction="#onLendClicked" prefHeight="26.0" prefWidth="280.0" styleClass="btnAction" text="Lend item" />
-                               <Label fx:id="lblLendError" id="lblError"/>
-                               <padding>
-                                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                               </padding>
-                           </VBox>
-                       </AnchorPane>
-                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="269.0" prefWidth="298.0">
-                           <VBox alignment="CENTER" layoutX="-1.0" layoutY="1.0" prefHeight="332.0" prefWidth="320.0" spacing="20.0">
-                               <TextField fx:id="txtItemCodeReceive" maxWidth="-Infinity" promptText="Item Code" styleClass="textField" />
-                               <Button maxWidth="-Infinity" onAction="#onReceiveClicked" styleClass="btnAction" text="Receive item" />
-                               <Label fx:id="lblReceiveError" id="lblError"/>
-                               <padding>
-                                   <Insets bottom="20.0" left="20.0" right="20.0" top="-35.0" />
-                               </padding>
-                           </VBox>
-                       </AnchorPane>
-                   </SplitPane>
-               </Pane>
+<Pane id="mainPane" fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="420.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaend.mainUIController">
+    <ToolBar id="toolbar" fx:id="toolbar" nodeOrientation="RIGHT_TO_LEFT" prefHeight="60.0" prefWidth="640.0">
+        <Button id="btnExit" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                onAction="#onButtonClose" text="X"/>
+    </ToolBar>
+    <TabPane layoutY="56.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="364.0" prefWidth="640.0" styleClass="tabPane"
+             tabClosingPolicy="UNAVAILABLE">
+        <Tab text="lending/receiving">
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="320.0"
+                  prefWidth="640">
+                <Label id="lblTabTitle" fx:id="lblUsername" prefWidth="640.0" text="Username here"/>
+                <SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="320.0"
+                           prefWidth="640.0" styleClass="splitPane">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="332.0" prefWidth="232.0">
+                        <VBox alignment="CENTER" layoutX="-1.0" layoutY="-4.0" prefHeight="332.0" prefWidth="320.0"
+                              spacing="20.0">
+                            <TextField fx:id="txtItemCodeLend" maxHeight="-Infinity" maxWidth="-Infinity"
+                                       promptText="Item code" styleClass="textField"/>
+                            <TextField fx:id="txtMemberIdLend" maxHeight="-Infinity" maxWidth="-Infinity"
+                                       promptText="Member identifier" styleClass="textField"/>
+                            <Button maxHeight="-Infinity" maxWidth="-Infinity" onAction="#onLendClicked"
+                                    prefHeight="26.0" prefWidth="280.0" styleClass="btnAction" text="Lend item"/>
+                            <Label id="lblError" fx:id="lblLendError"/>
+                            <padding>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                            </padding>
+                        </VBox>
+                    </AnchorPane>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="269.0" prefWidth="298.0">
+                        <VBox alignment="CENTER" layoutX="-1.0" layoutY="1.0" prefHeight="332.0" prefWidth="320.0"
+                              spacing="20.0">
+                            <TextField fx:id="txtItemCodeReceive" maxWidth="-Infinity" promptText="Item Code"
+                                       styleClass="textField"/>
+                            <Button maxWidth="-Infinity" onAction="#onReceiveClicked" styleClass="btnAction"
+                                    text="Receive item"/>
+                            <Label id="lblError" fx:id="lblReceiveError"/>
+                            <padding>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="-35.0"/>
+                            </padding>
+                        </VBox>
+                    </AnchorPane>
+                </SplitPane>
+            </Pane>
 
-           </Tab>
-           <Tab text="Collection" onSelectionChanged="#onCollectionClicked">
-               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="collectionPane" >
-                   <VBox prefWidth="640.0" prefHeight="320" maxHeight="-Infinity" maxWidth="-Infinity">
-                       <Label text="Items" id="lblTabTitle"/>
-                       <TableView fx:id="tableViewCollection">
+        </Tab>
+        <Tab onSelectionChanged="#onCollectionClicked" text="Collection">
+            <AnchorPane minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="180.0"
+                        prefWidth="200.0" styleClass="collectionPane">
+                <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="320" prefWidth="640.0">
+                    <HBox>
+                        <Label id="lblTabTitle" text="Items"/>
+                        <TextField promptText="search..." style="-fx-translate-y: 20; -fx-translate-x: 315"
+                                   styleClass="textField"/>
+                    </HBox>
+
+                    <TableView fx:id="tableViewCollection" nodeOrientation="LEFT_TO_RIGHT">
+                        <columns>
+                            <TableColumn prefWidth="100" text="Item Code"/>
+                            <TableColumn prefWidth="100" text="Available"/>
+                            <TableColumn prefWidth="250" text="Title"/>
+                            <TableColumn prefWidth="145" text="Author"/>
+                        </columns>
+                    </TableView>
+                    <HBox nodeOrientation="LEFT_TO_RIGHT" prefWidth="640.0" spacing="20">
+                        <Button id="AddButton" fx:id="btnAddItem" nodeOrientation="LEFT_TO_RIGHT"
+                                onAction="#onAddItemClicked" text="Add item"/>
+                        <Button id="EditButton" fx:id="btnEditItem" nodeOrientation="LEFT_TO_RIGHT"
+                                onAction="#onEditItemClicked" text="Edit item"/>
+                        <Button id="DelButton" fx:id="btnDelItem" nodeOrientation="LEFT_TO_RIGHT"
+                                onAction="#onDelItemClicked" text="Delete Item"/>
+                        <Label id="lblError" fx:id="lblCollectionError"/>
+                        <padding>
+                            <Insets bottom="25.0" top="10.0"/>
+                        </padding>
+                    </HBox>
+                    <HBox nodeOrientation="LEFT_TO_RIGHT" prefWidth="640.0" spacing="20.0">
+                        <TextField fx:id="txtCRUDItemTitle" promptText="Title" styleClass="textField"/>
+                        <TextField fx:id="txtCRUDItemAuthor" promptText="Author" styleClass="textField"/>
+                        <Button fx:id="btnConfirmItemCRUD" onAction="#onCRUDItemClicked" styleClass="btnAction"
+                                text="Create"/>
+                    </HBox>
+                    <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0"/>
+                    </padding>
+                </VBox>
+            </AnchorPane>
+        </Tab>
+        <Tab text="Members">
+               <AnchorPane minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="180.0" prefWidth="200.0" styleClass="collectionPane">
+                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="320" prefWidth="640.0">
+                       <HBox>
+                           <Label id="lblTabTitle" text="Members" />
+                           <TextField promptText="search..." style="-fx-translate-y: 20; -fx-translate-x: 315" styleClass="textField" />
+                       </HBox>
+
+                       <TableView fx:id="tableViewMembers" nodeOrientation="LEFT_TO_RIGHT">
                            <columns>
-                               <TableColumn text="Item Code" prefWidth="100"/>
-                               <TableColumn text="Available" prefWidth="100"/>
-                               <TableColumn text="Title" prefWidth="250"/>
-                               <TableColumn text="Author" prefWidth="145"/>
+                               <TableColumn prefWidth="100" text="Item Code" />
+                               <TableColumn prefWidth="100" text="Available" />
+                               <TableColumn prefWidth="250" text="Title" />
+                               <TableColumn prefWidth="145" text="Author" />
                            </columns>
                        </TableView>
-                       <HBox prefWidth="640.0" spacing="20">
-                           <Button text="Add item" styleClass="btnActionCollection" id="AddButton" onAction="#AddItemClicked" fx:id="btnAddItem"/>
-                           <Button text="Edit item" styleClass="btnActionCollection" id="EditButton" onAction="#EditItemClicked" fx:id="btnEditItem"/>
-                           <Button text="Delete Item" styleClass="btnActionCollection" id="DelButton" onAction="#DelItemClicked" fx:id="btnDelItem"/>
-                           <Label id="lblError" fx:id="lblCollectionError"/>
+                       <HBox nodeOrientation="LEFT_TO_RIGHT" prefWidth="640.0" spacing="20">
+                           <Button id="AddButton" fx:id="btnAddMember" nodeOrientation="LEFT_TO_RIGHT" onAction="#onAddMemberClicked" text="Add Member" />
+                           <Button id="EditButton" fx:id="btnEditMember" nodeOrientation="LEFT_TO_RIGHT" onAction="#onEditMemberClicked" text="Edit Member" />
+                           <Button id="DelButton" fx:id="btnDelMember" nodeOrientation="LEFT_TO_RIGHT" onAction="#onDelMemberClicked" text="Delete Member" />
+                           <Label id="lblError" fx:id="lblMemberError" />
                            <padding>
                                <Insets bottom="25.0" top="10.0" />
                            </padding>
                        </HBox>
-                       <HBox prefWidth="640.0" spacing="20.0">
-                           <TextField promptText="Title" fx:id="txtAddItemTitle" styleClass="textField"/>
-                           <TextField promptText="Author" fx:id="txtAddItemAuthor" styleClass="textField"/>
-                           <Button text="Create" fx:id="btnCreateItemPopup" styleClass="btnAction" onAction="#onCreateItemClicked"/>
+                       <HBox nodeOrientation="LEFT_TO_RIGHT" prefWidth="640.0" spacing="20.0">
+                           <TextField fx:id="txtCRUDMemberFirstName" promptText="Title" styleClass="textField" />
+                           <TextField fx:id="txtCRUDItemLastName" promptText="Author" styleClass="textField" />
+                           <Button fx:id="btnConfirmMemberCRUD" onAction="#onCRUDItemClicked" styleClass="btnAction" text="Create" />
                        </HBox>
                        <padding>
                            <Insets bottom="20.0" left="20.0" right="20.0" />
@@ -74,6 +129,5 @@
                    </VBox>
                </AnchorPane>
            </Tab>
-       </TabPane>
-   </children>
+    </TabPane>
 </Pane>
